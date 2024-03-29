@@ -1,0 +1,33 @@
+{
+  "albums": [
+    {
+      "title": "Boiadeiro Punho de Aço",
+      "year": 1957,
+      "songs": [
+        "Boiadeiro Punho de Aço",
+        "Luar do Sertão",
+        "Flor do Cafezal",
+        "Rio de Lágrimas",
+        "Beijinho Doce"
+      ]
+    },
+    {
+      "title": "Nossa Senhora da Conceição",
+      "year": 1960,
+      "songs": [
+        "Nossa Senhora da Conceição",
+        "Saudade de Minha Terra",
+        "Paineira Velha"
+      ]
+    },
+    {
+      "title": "O Mineiro e o Italiano",
+      "year": 1963,
+      "songs": [
+        "O Mineiro e o Italiano",
+        "Pai João",
+        "Pagode em Brasília"
+      ]
+    }
+  ]
+}
