@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Album extends Model
 {
     protected $fillable = ['title', 'year', 'cover_url'];
-
-    public function songs()
+    
+    public function tracks()
     {
-        return $this->hasMany(Song::class);
+        return $this->hasMany(Track::class);
     }
 }
