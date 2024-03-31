@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react"
+import { PropsAlbum, PropsTrack, getData } from "./api/api"
+import { Home } from "./components/Home"
+import { Playlist } from "./components/Playlist"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [screen,setScreen] = useState<"Home"|"Playlist">("Home")
+  const [playlistId,setPlaylistId] = useState<number>()
+
+  const [albums,setAlbums] = useState<PropsAlbum[] | null>(null)
+  const [tracks,setTracks] = useState<PropsTrack[] | null>(null)
+
+  async function getAlbumsAndTracks() {
+    setAlbums(await getData("/albums"))
+    setTracks(await getData("/tracks"))
+  }
+
+  useEffect(() =>{
+    getAlbumsAndTracks()
+  },[albums === null])
+
+  const loading=(
+    <div className="h-full flex flex-col justify-center">
+      <article aria-busy="true" className=" not-sr-only shadow-none"></article>
+      <p className="text-center">buscando</p>
+    </div>
+  )
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="w-full h-screen p-5 flex justify-center items-center">
+      <article className="w-full h-full  m-0 shadow-sm max-w-6x overflow-hidden ">
+        {screen == "Home" ? 
+          <Home loading={loading} albums={albums} tracks={tracks} setScreen={setScreen} /> :
+          <Playlist loading={loading} albums={albums} tracks={tracks} setScreen={setScreen} />
+        }
+      </article>
+    </div>
   )
 }
 
