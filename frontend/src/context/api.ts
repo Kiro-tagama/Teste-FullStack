@@ -5,12 +5,13 @@ import axios from "axios"
 const url_base = `http://127.0.0.1:8000/api`
 
 export interface PropsAlbum{
+  id: number;
   title:string;
   year:number;
   cover_url:string;
 }
 export interface PropsTrack{
-  album_id:string;
+  album_id:number;
   title:string;
 }
 
