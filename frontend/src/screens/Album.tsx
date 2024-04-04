@@ -14,7 +14,7 @@ export function Album() {
   const dataTracks = data.tracks
 
   const areaTracks=(
-    <div className="w-full h-max bg-red-400">
+    <div className="w-full h-full">
       <div className="flex justify-between items-start">
         <h4>Faixas</h4>
         {dataTracks?<span>{dataTracks?.length} Musica{dataTracks?.length <= 1 ? "":"s"}</span>:null}
@@ -34,8 +34,7 @@ export function Album() {
   )
 
   return(
-    <>
-      <div className="flex gap-5">
+    <div className="flex gap-5">
       <div className="h-min flex justify-center items-center ">
         <div className="w-min h-min flex flex-col gap-5 m-4">
           <img src={data.album?.cover_url} alt={data.album?.title}
@@ -48,7 +47,6 @@ export function Album() {
         </div>
       </div>
       {areaTracks}
-      </div>
-    </>
+    </div>
   )
 }

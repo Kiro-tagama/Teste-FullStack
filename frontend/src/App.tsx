@@ -9,8 +9,8 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <div className="h-screen p-5 flex justify-center items-center">
-      <article className="max-w-[90vw] h-full sm:max-h-[85vh] flex-1 sm:p-5 m-0 box-content">
+    <div className="h-screen p-2 sm:p-5 flex justify-center items-center">
+      <article className="max-w-[90vw] max-h-[85vh] h-full flex-1 p-2 sm:p-5 m-0 box-content">
       <RouterProvider router={router} />
       </article>
     </div>

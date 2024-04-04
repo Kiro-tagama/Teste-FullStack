@@ -63,8 +63,8 @@ export function Home() {
   )
 
   return(
-    <div>
-      <div className="flex gap-10 justify-between items-center">
+    <div className="h-full flex flex-col">
+      <div className="flex gap-2 justify-between items-center">
         <h2 className=" text-center m-0">Discografia</h2>
         <input 
           className=" max-w-xs !m-0"
