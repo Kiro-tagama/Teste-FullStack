@@ -1,11 +1,25 @@
-import { PropsAlbum, PropsTrack } from "../context/api"
+import { PropsAlbum, PropsTrack, getData } from "../context/api"
 import Loading from "../components/Loading"
 import { useMyContext } from "../context/context"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 export function Home() {
-  const {albums,tracks} = useMyContext()
+  const context = useMyContext()
   const nav = useNavigate()
+
+  const [query,setQuery] = useState<string>("")
+  const [data,setData] = useState<{albums:PropsAlbum[],tracks:PropsTrack[]} | null>(null)
+
+  async function getDataByQuery() {
+    setData(await getData(`/findPerName/${query}`))
+  }
+
+  useEffect(() =>{
+    getDataByQuery()
+  },[query])
+
+  const {albums,tracks} = query.length == 0 ? context : data == null ? context : data 
 
   const areaAlbum=(
     <div className="">
@@ -50,7 +64,19 @@ export function Home() {
 
   return(
     <div>
-    <h2 className=" text-center">Discografia</h2>
+      <div className="flex gap-10 justify-between items-center">
+        <h2 className=" text-center m-0">Discografia</h2>
+        <input 
+          className=" max-w-xs !m-0"
+          type="search"
+          name="search"
+          aria-label="Search"
+          placeholder="Buscar" 
+          value={query} 
+          onChange={txt=>setQuery(txt.target.value)} 
+        />
+      </div>
+      <hr />
       {albums == null ? <Loading/>:
         <div className=" h-[80vh] flex flex-1 flex-col justify-between gap-6  overflow-hidden">
           {areaAlbum}

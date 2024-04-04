@@ -15,7 +15,7 @@ export interface PropsTrack{
   title:string;
 }
 
-export const getData = (name:"/albums"|"/tracks") => axios.get(url_base+name)
+export const getData = (name:"/albums"|"/tracks"|`/findPerName/${string}`) => axios.get(url_base+name)
 .then(res => res.data)
 .catch(err => console.log(err))
 

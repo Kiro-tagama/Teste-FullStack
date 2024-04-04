@@ -8,6 +8,7 @@ Rodrigo Lopes - dev front-end
   docker compose up -d
   ```
   Backend
+  obs: lembre-se de criar um arquivo .env no caso pode só copiar o exemplo e renomear
   ```
   cd backend
   composer install
