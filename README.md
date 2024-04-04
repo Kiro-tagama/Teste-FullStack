@@ -25,8 +25,8 @@ Rodrigo Lopes - dev front-end
   url base - `http://127.0.0.1:8000/api`
 
   Para os albuns 
-  - `/albums` os methodos `GET` `POST`
-  - `/albums/{id}` os methodos `DELETE`, o id deve ser um número inteiro
+  - `/albums` os métodos `GET` `POST`
+  - `/albums/{id}` os métodos `DELETE`, o id deve ser um número inteiro
   ```json
     {
       "title": "title",
@@ -36,12 +36,21 @@ Rodrigo Lopes - dev front-end
   ```
 
   Para as faixas 
-  - `/tracks` os methodos `GET` `POST`
-  - `/tracks/{id}` os methodos `DELETE`, o id deve ser um número inteiro
+  - `/tracks` os métodos `GET` `POST`
+  - `/tracks/{id}` os métodos `DELETE`, o id deve ser um número inteiro
   ```json
     {
       "album_id": 2,
       "title": "title"
+    }
+  ```
+
+  Pesquisa por nome
+  - `/findPerName/{name}` o métodos `GET`
+  ```json
+    {
+      "albums": [],
+      "tracks": []
     }
   ```
 
@@ -52,7 +61,7 @@ Rodrigo Lopes - dev front-end
 
   ##### A fazer:
   - [x] Ver lista de álbuns e faixas
-  - [ ] Pesquisar álbuns e faixas por nome
+  - [x] Pesquisar álbuns e faixas por nome
   - [x] Adicionar um novo álbum
   - [x] Adicionar uma nova faixa em um álbum
   - [x] Excluir uma faixa
