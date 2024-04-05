@@ -12,7 +12,6 @@ Rodrigo Lopes - dev front-end
   ```
   cd backend
   composer install
-  php artisan migrate
   php artisan serve
   ```
   Frontend
