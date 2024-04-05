@@ -28,8 +28,4 @@ Route::middleware(['check.db.connection'])->group(function () {
             'tracks' => $tracks->isEmpty() ? [] : $tracks,
         ]);
     });
-    /*
-     Route::get('/albumTracks/{id}') //faixas do album
-     Route::get('/findPerName/{id}') // vai encontrar o album ou musica
-    */
 });
