@@ -20,7 +20,7 @@ Route::middleware(['check.db.connection'])->group(function () {
     Route::delete('/tracks/{id}', [TrackController::class, 'remove']);
     
     Route::get('/findPerName/{name}', function ($name) {
-        $albums = Album::where('nome', $name)->get();
+        $albums = Album::where('title', $name)->get();
         $tracks = Track::where('title', $name)->get();
     
         return response()->json([

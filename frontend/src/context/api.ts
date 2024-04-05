@@ -11,6 +11,7 @@ export interface PropsAlbum{
   cover_url:string;
 }
 export interface PropsTrack{
+  id: number;
   album_id:number;
   title:string;
 }

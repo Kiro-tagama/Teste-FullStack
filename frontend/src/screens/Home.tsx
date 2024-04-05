@@ -3,6 +3,7 @@ import Loading from "../components/Loading"
 import { useMyContext } from "../context/context"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { PopUp } from "../components/PupUp"
 
 export function Home() {
   const context = useMyContext()
@@ -41,12 +42,12 @@ export function Home() {
   )
 
   const areaTracks=(
-    <div className="h-min">
+    <div className="flex-1 flex flex-col overflow-auto">
       <div className="flex justify-between items-start">
         <h4>Faixas</h4>
         {tracks?<span>{tracks?.length} Musica{tracks?.length <= 1 ? "":"s"}</span>:null}
       </div>
-      <div className="max-h-[30vh] overflow-auto">
+      <div className="flex-1 overflow-auto">
         {tracks == null ? <Loading/>:
           <>
             {tracks?.map((track:PropsTrack,i:number) =>
@@ -64,21 +65,24 @@ export function Home() {
 
   return(
     <div className="h-full flex flex-col">
-      <div className="flex gap-2 justify-between items-center">
+      <div className="flex gap-4 justify-between items-center flex-col sm:flex-row">
         <h2 className=" text-center m-0">Discografia</h2>
-        <input 
-          className=" max-w-xs !m-0"
-          type="search"
-          name="search"
-          aria-label="Search"
-          placeholder="Buscar" 
-          value={query} 
-          onChange={txt=>setQuery(txt.target.value)} 
-        />
+        <div className="flex gap-2 flex-1 justify-end">
+          <input 
+            className=" max-w-xs !m-0"
+            type="search"
+            name="search"
+            aria-label="Search"
+            placeholder="Buscar" 
+            value={query} 
+            onChange={txt=>setQuery(txt.target.value)} 
+          />
+          <PopUp />
+        </div>
       </div>
       <hr />
       {albums == null ? <Loading/>:
-        <div className=" h-[80vh] flex flex-1 flex-col justify-between gap-6  overflow-hidden">
+        <div className=" h-[80vh] flex flex-1 flex-col gap-6  overflow-hidden">
           {areaAlbum}
           {areaTracks}
         </div>

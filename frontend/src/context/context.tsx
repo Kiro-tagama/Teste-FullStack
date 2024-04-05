@@ -4,7 +4,7 @@ import { PropsAlbum, PropsTrack, getData } from './api';
 export interface ContextType {
   albums: PropsAlbum[] | null;
   tracks: PropsTrack[] | null;
-  // getAlbumsAndTracks: () => Promise<void>;
+  getAlbumsAndTracks: () => Promise<void>;
 }
 interface ContextProviderProps {
   children: ReactNode;
@@ -27,7 +27,7 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({ children }) =>
 
   return (
     <Context.Provider value={{
-      albums,tracks
+      albums,tracks, getAlbumsAndTracks
     }}>
       {children}
     </Context.Provider>
