@@ -20,9 +20,9 @@ Route::middleware(['check.db.connection'])->group(function () {
     Route::delete('/tracks/{id}', [TrackController::class, 'remove']);
     
     Route::get('/findPerName/{name}', function ($name) {
-        $albums = Album::where('title', $name)->get();
-        $tracks = Track::where('title', $name)->get();
-    
+        $albums = Album::where('title', 'like', "%$name%")->get();
+        $tracks = Track::where('title', 'like', "%$name%")->get();
+        
         return response()->json([
             'albums' => $albums->isEmpty() ? [] : $albums,
             'tracks' => $tracks->isEmpty() ? [] : $tracks,

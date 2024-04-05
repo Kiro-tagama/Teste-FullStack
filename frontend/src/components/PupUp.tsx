@@ -9,7 +9,7 @@ export function PopUp(){
 
   const data = new Date()
   const initialStateFormAlbum = {title:"",year:data.getFullYear(),cover_url:"",id:0}
-  const initialStateFormTrack = {album_id: 0, title:""}
+  const initialStateFormTrack = {album_id: 0, title:"",id:0}
   const [formAlbum, setFormAlbum] = useState<PropsAlbum>(initialStateFormAlbum)
   const [formTrack, setFormTrack] = useState<PropsTrack>(initialStateFormTrack)
 
@@ -21,8 +21,8 @@ export function PopUp(){
       <details className="dropdown m-0">
         <summary>options</summary>
         <ul>
-          <li><a onClick={()=>setShowAlbum(true)}>Add Album</a></li>
-          <li><a onClick={()=>setShowTrack(true)}>Add Faixa</a></li>
+          <li className=" cursor-pointer"><a onClick={()=>setShowAlbum(true)}>Add Album</a></li>
+          <li className=" cursor-pointer"><a onClick={()=>setShowTrack(true)}>Add Faixa</a></li>
         </ul>
       </details>
       {/*  */}
